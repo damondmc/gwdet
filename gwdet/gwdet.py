@@ -165,7 +165,7 @@ class averageangles(object):
                 hist_dist = scipy.stats.rv_histogram(hist)
 
                 with open(self.binfile, 'wb') as f: pickle.dump(hist_dist, f)
-            with open(self.binfile, 'rb') as f: hist_dist = pickle.load(f)
+            with open(self.binfile, 'rb') as f: hist_dist = pickle.load(f, encoding="bytes")
 
             self._interpolate = hist_dist.sf # sf give the cdf P(>w) instead of P(<w)
 
@@ -457,7 +457,9 @@ class detectability(object):
 
             #    with open(self.tempfile, 'wb') as f: pickle.dump(snrinterpolant, f)
 
-            #with open(self.tempfile, 'rb') as f: self._snrinterpolant = pickle.load(f)
+            #with open(self.tempfile, 'rb') as f: self._snrinterpolant = 
+            
+            
 
         return self._snrinterpolant
 
@@ -546,7 +548,7 @@ class detectability(object):
 
                 with open(self.binfile, 'wb') as f: pickle.dump(interpolant, f)
 
-            with open(self.binfile, 'rb') as f: interpolant = pickle.load(f)
+            with open(self.binfile, 'rb') as f: interpolant = pickle.load(f, encoding="bytes")
 
             self._interpolate = interpolant
 
